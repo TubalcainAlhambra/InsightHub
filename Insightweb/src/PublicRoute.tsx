@@ -1,0 +1,11 @@
+import { Navigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
+import type { JSX } from "react/jsx-dev-runtime";
+
+export const PublicRoute = ({ children }: { children: JSX.Element }) => {
+  const { user } = useAuth();
+
+  if (user) return <Navigate to="/home" replace />;
+
+  return children;
+};
